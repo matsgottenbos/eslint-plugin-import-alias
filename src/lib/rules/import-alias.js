@@ -70,7 +70,7 @@ export function create(context) {
               : `import statement must be an alias or no more than ${relativeDepth} levels deep`,
             fix(fixer) {
               const parsedPath = path.parse(context.getFilename());
-              const importPath = path.relative(rootDir, path.resolve(parsedPath.dir, importValue));
+              const importPath = path.relative(rootDir, path.resolve(parsedPath.dir, importValue)).replace(/\\/g, '/');
 
               for (const item of aliases) {
                 const match = importPath.match(item.matcher);
