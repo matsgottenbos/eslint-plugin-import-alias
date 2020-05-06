@@ -1,13 +1,15 @@
 eslint-plugin-import-alias
 ===================
 
+Forked from [https://github.com/steelsojka/eslint-import-alias]
+
 An ESLint rule for forcing import path aliases.
 
 Install
 -------
 
 ```shell
-npm install --save-dev eslint-plugin-import-alias
+yarn add https://github.com/matsgottenbos/eslint-import-alias.git
 ```
 
 Usage
