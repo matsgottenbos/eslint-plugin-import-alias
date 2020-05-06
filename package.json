@@ -16,11 +16,13 @@
     "prebuild": "npm run clean"
   },
   "author": "Mats Gottenbos",
-  "contributors": ["Steven Sojka"],
+  "contributors": [
+    "Steven Sojka"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^4.19.1"
+    "eslint": "^6.8.0"
   }
 }
