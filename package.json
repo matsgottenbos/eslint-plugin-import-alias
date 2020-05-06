@@ -15,7 +15,8 @@
     "build": "babel src --out-dir ./ ",
     "prebuild": "npm run clean"
   },
-  "author": "Steven Sojka",
+  "author": "Mats Gottenbos",
+  "contributors": ["Steven Sojka"],
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,7 +1,7 @@
 eslint-plugin-import-alias
 ===================
 
-Forked from <https://github.com/steelsojka/eslint-import-alias>
+This is a fork of <https://github.com/steelsojka/eslint-import-alias> by Steven Sojka. The original project seems to be abandoned.
 
 An ESLint rule for forcing import path aliases.
 
@@ -9,7 +9,7 @@ Install
 -------
 
 ```shell
-yarn add -D https://github.com/matsgottenbos/eslint-import-alias.git
+yarn add -D @matsgottenbos/eslint-plugin-import-alias
 ```
 
 Usage
