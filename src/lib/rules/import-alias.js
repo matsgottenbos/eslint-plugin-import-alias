@@ -63,11 +63,14 @@ export function create(context) {
         const depth = getDepthCount(matches[0]);
 
         if (depth > relativeDepth) {
+          let message;
+          if (relativeDepth < 0) message = 'Import paths must use a path alias';
+          else if (relativeDepth === 0) message = 'Import paths to parent directories must use a path alias';
+          else message = `Import paths to parent directories of ${relativeDepth} or more levels up must use a path alias`;
+
           context.report({
             node,
-            message: relativeDepth === -1
-              ? 'Import path mush be a path alias'
-              : `import statement must be an alias or no more than ${relativeDepth} levels deep`,
+            message,
             fix(fixer) {
               const parsedPath = path.parse(context.getFilename());
               const importPath = path.relative(rootDir, path.resolve(parsedPath.dir, importValue)).replace(/\\/g, '/');
