@@ -1,7 +1,7 @@
 eslint-plugin-import-alias
 ===================
 
-Forked from [https://github.com/steelsojka/eslint-import-alias]
+Forked from <https://github.com/steelsojka/eslint-import-alias>
 
 An ESLint rule for forcing import path aliases.
 
