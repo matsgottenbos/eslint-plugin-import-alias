@@ -1,33 +1,31 @@
-eslint-plugin-import-alias
-===================
-
-This is a fork of <https://github.com/steelsojka/eslint-import-alias> by Steven Sojka. The original project seems to be abandoned.
+# eslint-plugin-import-alias
 
 An ESLint rule for forcing import path aliases.
 
-Install
--------
+This is a fork of <https://github.com/steelsojka/eslint-import-alias> by Steven Sojka. The original project seems to be abandoned.
+
+## Installation
 
 ```shell
 yarn add -D @matsgottenbos/eslint-plugin-import-alias
 ```
 
-Usage
------
+## Usage
 
 ```javascript
+import { test } from '~/test'; // valid
 import { test } from '@src/test'; // valid
 import { test } from './test'; // invalid
 import { test } from '../test'; // invalid
 
-// Optional relative depth can be specified.
+// Optional relative depth can be specified to allow unaliased paths when they do not go up to parent directories higher than the relative depth
 import { test } from './test'; // valid, { relativeDepth: 0 }
+import { test } from './test/test'; // valid, { relativeDepth: 0 }
 import { test } from '../test'; // valid, { relativeDepth: 1 }
 import { test } from '../../test'; // invalid, { relativeDepth: 1 }
 ```
 
-Configure
----------
+## Configure
 
 ```javascript
 {
@@ -37,9 +35,14 @@ Configure
       {
         "relativeDepth": 0,
         "aliases": [
-          { "alias": "@src", "matcher": "^src" }, // src/modules/app/test -> @src/modules/app/test
-          { "alias": "@test", "matcher": "^test\/unit" }, // test/unit/modules/app -> @test/modules/app
-          { "alias": "@testRoot", "matcher": "^(test)\/e2e" } // test/e2e/modules/app -> @testRoot/e2e/modules/app
+          // Example: rewrites imports pointing to `src/modules/app/index.js` to `@src/modules/app/index.js`
+          { "alias": "@src", "matcher": "^src" },
+
+          // Example: rewrites imports pointing to `test/unit/modules/app` to `@test/modules/app`
+          { "alias": "@test", "matcher": "^test\/unit" },
+
+          // Example: rewrites imports pointing to `test/e2e/modules/app` to `@testRoot/e2e/modules/app`
+          { "alias": "@testRoot", "matcher": "^(test)\/e2e" },
         ]
       }
     ]
@@ -52,9 +55,8 @@ Optionally, you can define a capture group to replace only the part within the c
 
 A 'rootDir' can be defined to resolve the file paths from. This defaults to `process.cwd()`. In a lot of cases, this is already the project root in most cases.
 
-
 ```javascript
-module.exports = {
+{
   "rules": {
     "import-alias/import-alias": [
       "error",
@@ -62,7 +64,11 @@ module.exports = {
         "relativeDepth": 0,
         "rootDir": __dirname,
         "aliases": [
-          { "alias": "@src", "matcher": "^src" } // src/modules/app/test -> @src/modules/app/test
+          // Example: rewrites imports pointing to `src/modules/app/index.js` to `~/modules/app/index.js`
+          { "alias": "~/", "matcher": "^" },
+
+          // Example: rewrites imports pointing to `src/modules/app/index.js` to `@src/modules/app/index.js`
+          { "alias": "@src", "matcher": "^src" },
         ]
       }
     ]
