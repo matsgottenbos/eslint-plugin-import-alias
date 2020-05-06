@@ -9,7 +9,7 @@ Install
 -------
 
 ```shell
-yarn add https://github.com/matsgottenbos/eslint-import-alias.git
+yarn add -D https://github.com/matsgottenbos/eslint-import-alias.git
 ```
 
 Usage
